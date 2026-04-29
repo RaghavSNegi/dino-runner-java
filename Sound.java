@@ -5,12 +5,20 @@ public class Sound {
 
     public static void play(String filename) {
         try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File(filename));
+            File file = new File("src/" + filename);
+
+            if (!file.exists()) {
+                System.out.println("File NOT found: " + file.getAbsolutePath());
+                return;
+            }
+
+            AudioInputStream audio = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
+
         } catch (Exception e) {
-            System.out.println("Sound error: " + filename);
+            e.printStackTrace();
         }
     }
 }

@@ -48,7 +48,7 @@ public class GamePanel extends JPanel implements ActionListener {
             jumpY += (20 + jumpBoost);
         }
 
-        if (jumpY >= 260) {
+        if (jumpY >= 280) {
             falling = true;
         }
 
